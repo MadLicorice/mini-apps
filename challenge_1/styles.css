@@ -49,6 +49,9 @@ table {
 
 /* ========= END RESET ========= */
 
+h1 {
+  font-size: 64px;
+}
 body {
   height: 100%;
   width: 100%;
@@ -60,6 +63,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+
 } 
 #title {
   display: flex;
@@ -68,6 +72,7 @@ body {
   height: 300px;
   width: 300px;
   border: 4px solid red;
+  margin: 10px 0 10px 0;
 
   display: flex;
   flex-direction: column;
@@ -76,18 +81,37 @@ body {
   display: flex;
   flex-direction: row;
 }
-.col {
+.box {
   height: 100px;
   width: 100px;
   border: 4px solid red;
+  font-size: 50px;
+  font-family: arial;
 
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
-
-
-
+.head {
+  flex-direction: column;
+  display: flex;
+}
+p {
+  font-size: 24px;
+  font-family: arial;
+}
+#reset {
+  width: 60px;
+  display: flex;
+}
+.foot {
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 auto;
+}
+#winner {
+  font-size: 30px;
+  font-family: arial;
+}
 
 
