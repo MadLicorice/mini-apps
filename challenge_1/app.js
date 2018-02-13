@@ -1,10 +1,11 @@
 document.addEventListener('DOMContentLoaded', function() {
   let state = {
-    board: [0, 0, 0,   0, 0, 0,   0, 0, 0],
+    board: [0, 0, 0, 
+            0, 0, 0, 
+            0, 0, 0],
     currentPlayer: 'X',
     wins: {
       fin: false,
-      startPlayer: 'X',
       winsX: 0,
       winsY: 0
     }
@@ -12,9 +13,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
   const init = function() {
     let board = document.getElementById('board');
+    let resetButton = document.getElementById('reset');
+
     board.addEventListener('click', function(event) {
       handleClick(event);
     });
+
+    resetButton.addEventListener('click', function(event) {
+      reset();
+    });
+
   }
   
   const handleClick = function(event) {
@@ -27,76 +35,97 @@ document.addEventListener('DOMContentLoaded', function() {
       if (id >= 1 && id <= 9 && !box.innerHTML) {
         box.innerHTML = state.currentPlayer;
         if (state.currentPlayer === 'X') {
-          state.board[id - 1] = 1;
+          state.board[id - 1] = '1';
           state.currentPlayer = 'O';
           turn.innerHTML = 'O';
         } else {
-          state.board[id - 1] = 2;
+          state.board[id - 1] = '2';
           state.currentPlayer = 'X';
           turn.innerHTML = 'X';
         }
 
-      //checkWinner(id, player);
+      checkWinOrTie(player);
       }
+    } else {
+      reset();
     }
   }
 
-  const checkWinner = function(id, player) {
+  const checkWinOrTie = function(player) {
     let flag = false;
     if (!state.board.includes(0)) {
       flag = true;
     }
     if (!flag) {
-      if (id === (1 || 3 || 5 || 7 || 9)) {
-        checkWinnerByRowOrCol(player);
-        checkWinnerByDiag(player);
-      } else {
-        checkWinnerByRowOrCol(player);
-      }
+      checkWinner(player);
     } else {
       declareTie();
     }
   }
 
-  const checkWinnerByRowOrCol = function(player) {
+  const checkWinner = function(player) {
     let x = state.board;
     if (
-      ((x[0] + x[1] + x[2]) === (3 || 6)) 
-      || ((x[3] + x[4] + x[5]) === (3 || 6))  
-      || ((x[6] + x[7] + x[8]) === (3 || 6))
+      ((x[0] + x[1] + x[2]) === ('111')) || ((x[0] + x[1] + x[2]) === ('222'))
+      || ((x[3] + x[4] + x[5]) === ('111')) || ((x[3] + x[4] + x[5]) === ('222'))   
+      || ((x[6] + x[7] + x[8]) === ('111')) || ((x[6] + x[7] + x[8]) === ('222'))
       ) {
       winnerWinnerChickenDinner(player);
     } else if (
-      ((x[0] + x[3] + x[6]) === (3 || 6)) 
-      || ((x[1] + x[4] + x[7]) === (3 || 6))  
-      || ((x[2] + x[5] + x[8]) === (3 || 6))
-      )  {
-      winnerWinnerChickenDinner(player);
-    }
-  }
-
-  const checkWinnerByDiag = function(player) {
-    let x = state.board;
-    if (
-      ((x[0] + x[4] + x[8]) === (3 || 6)) 
-      || ((x[2] + x[4] + x[6]) === (3 || 6))  
+      ((x[0] + x[3] + x[6]) === ('111')) || ((x[0] + x[3] + x[6]) === ('222'))
+      || ((x[1] + x[4] + x[7]) === ('111')) || ((x[1] + x[4] + x[7]) === ('222'))  
+      || ((x[2] + x[5] + x[8]) === ('111')) || ((x[2] + x[5] + x[8]) === ('222'))
       ) {
       winnerWinnerChickenDinner(player);
+    } else if (
+      ((x[0] + x[4] + x[8]) === ('111')) || ((x[0] + x[4] + x[8]) === ('222'))
+      || ((x[2] + x[4] + x[6]) === ('111')) || ((x[2] + x[4] + x[6]) === ('222'))
+      ) {
+      winnerWinnerChickenDinner(player);
+    } else {
+      return;
     }
   }
 
   const winnerWinnerChickenDinner = function(player) {
     document.getElementById('winners').innerHTML = `${player} Wins!`
+    document.getElementById('turn').innerHTML = player;
+    state.currentPlayer = player;
+    state.wins.fin = true;
+    updateLeaderboard(player);
+    return;
+  }
+
+  const updateLeaderboard = function(player) {
+    if (player === 'X') {
+      state.wins.winsX += 1;
+      document.getElementById('X').innerHTML = state.wins.winsX;
+    } else {
+      state.wins.winsY += 1;
+      document.getElementById('Y').innerHTML = state.wins.winsY;
+    }
+    return;
   }
 
   const declareTie = function() {
     document.getElementById('winners').innerHTML = 'It\'s a tie! You both lose!!'
+    document.getElementById('turn').innerHTML = 'X';
+    state.currentPlayer = 'X';
+    state.wins.fin = true;
+    return;
   }
 
-  const reset = function() {
-
+  const reset = function(event) {
+    state.board = [0, 0, 0,
+                   0, 0, 0,   
+                   0, 0, 0];
+    Array.from(document.getElementsByClassName('box')).forEach(item => {
+      item.innerHTML = '';
+    });
+    state.wins.fin = false;
+    document.getElementById('winners').innerHTML = '';
+    return;
   }
 
   init();
 });
-
