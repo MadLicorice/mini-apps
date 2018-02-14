@@ -1,2 +1,23 @@
-
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Commas R' Us</title>
+  </head>
+  <body>
+    <div id="wrapper">
+        <div id="div-one">
+          <form method="post" id="submit">
+            <textarea id="data" type="text" placeholder="Input text to get back a CSV file..."></textarea>
+            <input id="databutton" type="submit" value="Submit">
+          </form>
+        </div>
+        <div id="div-two">
+          <textarea id="csv-data" text="text" readonly="true"></textarea>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>

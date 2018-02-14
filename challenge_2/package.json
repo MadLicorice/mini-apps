@@ -1,0 +1,25 @@
+{
+  "name": "challenge_2",
+  "version": "1.0.0",
+  "description": "CSV",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MadLicorice/hrsf90-mini-apps.git"
+  },
+  "author": "Yunus",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "jquery": "^3.3.1",
+    "nodemon": "^1.14.12",
+    "webpack": "^3.11.0",
+    "body-parser": "^1.18.2",
+    "request": "^2.83.0",
+    "bluebird": "^3.3.4"
+  }
+}
