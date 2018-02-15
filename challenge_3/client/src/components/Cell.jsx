@@ -3,25 +3,34 @@ import React from 'react';
 class Cell extends React.Component {
   constructor(props) {
     super(props)
-
-    this.state = {
-      player: 3
-    }
   }
 
   render() {
-    return (
-      <div 
-          className="cell" 
-          onClick={() => this.props.handleClick(this.props.colId)}>
-          {'Col:'}{this.props.colId}{' Row:'}{this.props.rowId}
-      </div>
-    )
+    if (this.props.cell === 3) {
+      return (
+        <div 
+            className="cells white" 
+            onClick={() => this.props.handleClick(this.props.colId)}>
+        </div>
+      )
+    }
+    if (this.props.cell === 2) {
+      return (
+        <div 
+            className="cells yellow" 
+            onClick={() => this.props.handleClick(this.props.colId)}>
+        </div>
+      )
+    }
+    if (this.props.cell === 1) {
+      return (
+        <div 
+            className="cells red" 
+            onClick={() => this.props.handleClick(this.props.colId)}>
+        </div>
+      )
+    }
   }
 }
-
-
-
-
 
 export default Cell;
