@@ -1,0 +1,39 @@
+{
+  "name": "challenge_3",
+  "version": "1.0.0",
+  "description": "Challenge3",
+  "main": "server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js --inspect",
+    "dev": "webpack -d --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MadLicorice/hrsf90-mini-apps.git"
+  },
+  "author": "Yunus",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MadLicorice/hrsf90-mini-apps/issues"
+  },
+  "homepage": "https://github.com/MadLicorice/hrsf90-mini-apps#readme",
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "webpack": "^3.11.0"
+  },
+  "dependencies": {
+    "axios": "^0.17.1",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "jquery": "^3.3.1",
+    "mysql": "^2.15.0",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "request": "^2.83.0",
+    "sequelize": "^4.33.3"
+  }
+}
