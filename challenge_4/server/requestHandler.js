@@ -10,3 +10,21 @@ const Schema = mongoose.model('collectionTwo', {poop: String, score: Number})
 
 
 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//const Schema = mongoose.model('newCol', {name: String, birth: String, age: Number});

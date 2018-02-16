@@ -15,8 +15,9 @@ app.use(express.static(pathname));
 app.post('/', (req, res) => {
   console.log(req.body);
   let bowler = new mondo.listen(req.body);
-  bowler.save().then(() => console.log('Giri wuz here'));
-  res.send('Received POST request!');
+  bowler.save().then(() => {
+    res.send('Received ')
+  })
 })
 
 app.get('/scores', (req, res) => {
